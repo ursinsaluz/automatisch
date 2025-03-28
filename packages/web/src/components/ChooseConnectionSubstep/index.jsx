@@ -219,7 +219,7 @@ function ChooseConnectionSubstep(props) {
         }
       }
     },
-    [step, onChange, queryClient],
+    [stepConnection?.id, onChange, step, queryClient],
   );
 
   React.useEffect(() => {
