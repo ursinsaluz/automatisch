@@ -6,6 +6,12 @@ services:
     entrypoint: /compose-entrypoint.sh
     ports:
       - '3000:3000'
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.main.rule=Host(`automatisch.localhost`)
+      - "traefik.http.routers.main.entrypoints=websecure"
+      - "traefik.http.routers.main.tls.certresolver=lets-encrypt"
+      - "traefik.http.services.main.loadbalancer.server.port=3000"
     depends_on:
       postgres:
         condition: service_healthy
